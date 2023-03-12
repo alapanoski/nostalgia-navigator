@@ -1,9 +1,76 @@
+import { useState, useRef, useEffect } from "react"
+
 import Head from "next/head"
 import { Inter } from "next/font/google"
+
+import { AiOutlinePlus, AiOutlineCloseCircle } from "react-icons/ai"
 
 const inter = Inter({ subsets: ["latin"] })
 
 const images = [
+  {
+    image: "This will eventually be an image",
+  },
+  {
+    image: "This will eventually be an image",
+  },
+  {
+    image: "This will eventually be an image",
+  },
+  {
+    image: "This will eventually be an image",
+  },
+  {
+    image: "This will eventually be an image",
+  },
+  {
+    image: "This will eventually be an image",
+  },
+  {
+    image: "This will eventually be an image",
+  },
+  {
+    image: "This will eventually be an image",
+  },
+  {
+    image: "This will eventually be an image",
+  },
+  {
+    image: "This will eventually be an image",
+  },
+  {
+    image: "This will eventually be an image",
+  },
+  {
+    image: "This will eventually be an image",
+  },
+  {
+    image: "This will eventually be an image",
+  },
+  {
+    image: "This will eventually be an image",
+  },
+  {
+    image: "This will eventually be an image",
+  },
+  {
+    image: "This will eventually be an image",
+  },
+  {
+    image: "This will eventually be an image",
+  },
+  {
+    image: "This will eventually be an image",
+  },
+  {
+    image: "This will eventually be an image",
+  },
+  {
+    image: "This will eventually be an image",
+  },
+  {
+    image: "This will eventually be an image",
+  },
   {
     image: "This will eventually be an image",
   },
@@ -82,6 +149,42 @@ const snaps = [
 ]
 
 export default function Home() {
+  const [isCameraOpen, setIsCameraOpen] = useState(false)
+
+  const videoRef = useRef(null)
+
+  const getVideo = () => {
+    navigator.mediaDevices
+      .getUserMedia({ video: { width: 300 } })
+      .then((stream) => {
+        let video = videoRef.current
+        video.srcObject = stream
+        video.play()
+      })
+      .catch((err) => {
+        console.error("error:", err)
+      })
+  }
+
+  // useEffect(() => {
+  //   getVideo()
+  // }, [videoRef])
+
+  const paintToCanvas = () => {
+    let video = videoRef.current
+    let photo = photoRef.current
+    let ctx = photo.getContext("2d")
+
+    const width = 320
+    const height = 240
+    photo.width = width
+    photo.height = height
+
+    return setInterval(() => {
+      ctx.drawImage(video, 0, 0, width, height)
+    }, 200)
+  }
+
   return (
     <>
       <Head>
@@ -91,21 +194,54 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="container mx-auto min-h-screen flex flex-col items-center">
-        <h1 className="text-4xl text-red-400">Explorer</h1>
+        <nav className="w-full h-16 flex flex-row justify-between items-center">
+          <h1 className="text-4xl text-red-400">Explorer</h1>
+          <div className="h-12 w-12 rounded-full flex justify-center items-center">
+            Allen
+          </div>
+        </nav>
 
-        <div className="w-full flex flex-row justify-start items-center gap-2">
+        <div className="w-full flex flex-row justify-start items-center gap-2 shrink-0 overflow-x-scroll">
           {snaps.map((snap) => {
             return <div className="w-40 h-72">{snap.snap}</div>
           })}
         </div>
 
-        <div className="w-full p-4 flex flex-row justify-start items-center gap-2 flex-wrap">
+        <div className="w-full p-4 flex flex-row justify-center md:justify-start items-center gap-1 md:gap-2 flex-wrap">
           {images.map((image) => {
-            return <div className="w-40 h-40">{image.image}</div>
+            return (
+              <div className="w-24 h-24 md:w-32 md:h-32">{image.image}</div>
+            )
           })}
         </div>
 
-        <button className="fixed bottom-32 right-40">Plus</button>
+        <div
+          className={
+            (isCameraOpen ? "fixed" : "none") +
+            " top-[50%] left-[50%] -translate-y-2/4 -translate-x-2/4 h-4/5 w-4/5"
+          }
+        >
+          <button
+            className="absolute top-0 right-0 text-5xl"
+            onClick={() => {
+              setIsCameraOpen(false)
+            }}
+          >
+            <AiOutlineCloseCircle />
+          </button>
+          <div ref={videoRef}></div>
+          <canvas />
+          <button>Capture</button>
+        </div>
+
+        <button
+          onClick={() => {
+            setIsCameraOpen(true)
+          }}
+          className="fixed bottom-[10%] md:bottom-[15%] right-[10%] text-5xl rounded-full"
+        >
+          <AiOutlinePlus />
+        </button>
       </main>
     </>
   )
