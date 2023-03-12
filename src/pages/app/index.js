@@ -133,6 +133,7 @@ const snaps = [
 
 export default function Home() {
   const [isCameraOpen, setIsCameraOpen] = useState(false)
+  const [isViewingImage, setIsViewingImage] = useState(false)
 
   const [username, setUsername] = useState("Allen")
 
@@ -194,6 +195,22 @@ export default function Home() {
     {
       imgUrl: "https://source.unsplash.com/random?love",
       date: new Date("2022-03-07T14:20:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?radio",
+      date: new Date("2021-03-10T09:15:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?girl",
+      date: new Date("2021-03-10T09:15:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?boy",
+      date: new Date("2021-03-10T09:15:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?magic",
+      date: new Date("2021-03-10T09:15:00Z"),
     },
     {
       imgUrl: "https://source.unsplash.com/random?radio",
@@ -296,7 +313,12 @@ export default function Home() {
           <div className="w-full p-4 flex flex-row justify-center md:justify-start items-center gap-1 md:gap-2 flex-wrap">
             {imageList.map((image) => {
               return (
-                <div className="w-24 h-24 md:w-32 md:h-32 bg-primary flex justify-center items-center overflow-hidden">
+                <div
+                  className="w-24 h-24 md:w-32 md:h-32 bg-primary flex justify-center items-center overflow-hidden"
+                  onClick={() => {
+                    setIsViewingImage(true)
+                  }}
+                >
                   <Image src={image.imgUrl} width={2000} height={2000} />
                 </div>
               )
@@ -323,6 +345,29 @@ export default function Home() {
             <button className="absolute bottom-0 left-2/4 -translate-x-2/4 text-white text-6xl">
               <AiOutlineCamera />
             </button>
+          </div>
+
+          <div
+            className={
+              (isViewingImage ? "fixed" : "hidden") +
+              " top-[50%] left-[50%] -translate-y-2/4 -translate-x-2/4 h-4/5 w-4/5"
+            }
+          >
+            <button
+              className="absolute top-0 right-0 p-4 text-5xl text-primary"
+              onClick={() => {
+                setIsViewingImage(false)
+              }}
+            >
+              <AiOutlineCloseCircle />
+            </button>
+            <div className="h-4/5 flex justify-center items-center overflow-hidden">
+              <Image
+                src="https://source.unsplash.com/random?school"
+                width={1000}
+                height={500}
+              />
+            </div>
           </div>
 
           <button
