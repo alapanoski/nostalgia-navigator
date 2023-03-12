@@ -297,14 +297,14 @@ export default function Home() {
         <div className="mt-20 h-full">
           <div className="w-screen md:w-full py-10">
             <p className="text-3xl">Your Latest Memories</p>
-          </div>
+          </div> 
 
           <div className="w-screen md:w-full flex flex-row justify-start items-center gap-2 shrink-0 overflow-x-scroll">
             {snaps.map((snap) => {
               return (
-                <div className="w-40 h-72 border border-primary rounded-md flex justify-center items-center">
+                <a className="w-40 h-72 border border-primary rounded-md flex justify-center items-center" href="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_1MB.mp4">
                   <Image src={sampleVideo} />
-                </div>
+                </a>
               )
             })}
           </div>
@@ -363,7 +363,7 @@ export default function Home() {
             </button>
             <div className="h-4/5 flex justify-center items-center overflow-hidden">
               <Image
-                src="https://source.unsplash.com/random?school"
+                src={"https://source.unsplash.com/random?friends"}
                 width={1000}
                 height={500}
               />

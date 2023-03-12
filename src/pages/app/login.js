@@ -18,7 +18,7 @@ export default function Home() {
           <input type="text" name="username" placeholder="Email"/>
           <input type="password" name="password" placeholder="Password"/>
           <button>New here? Signup</button>
-          <button type="submit" className="btn">Login</button>  
+          <button type="submit" className="btn"><a href="/app/">Login</a></button>  
         </form>
       </main>
     </>

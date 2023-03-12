@@ -34,14 +34,14 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="min-h-[75vh] flex flex-col justify-center items-center">
+        {/* <section className="min-h-[75vh] flex flex-col justify-center items-center">
           <h2 className="text-4xl">Yo! Lots of people use this bruh!</h2>
         </section>
 
         <section className="min-h-[75vh] flex flex-col justify-center items-center">
           <p>Footer stuff</p>
           <p className="justify-self-end">Don't copy our stuff mate © 2023</p>
-        </section>
+        </section> */}
       </main>
     </>
   )
