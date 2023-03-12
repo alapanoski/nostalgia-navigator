@@ -19,7 +19,7 @@ export default function Home() {
         <section className="min-h-[80vh] flex flex-row justify-evenly gap-4 items-center">
           <div className="flex flex-col justify-center gap-4 items-start ">
             <h1 className="text-6xl text-red-400">Snap a day</h1>
-            <p className="text-3xl">Create long lasting memories</p>
+            <p className="text-3xl">Track your Memories</p>
             <div className="flex flex-row gap-4">
               <button className="btn rounded">
                 <a href="/app">Start Now</a>

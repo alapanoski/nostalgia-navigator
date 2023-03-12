@@ -363,7 +363,7 @@ export default function Home() {
             </button>
             <div className="h-4/5 flex justify-center items-center overflow-hidden">
               <Image
-                src={"https://source.unsplash.com/random?friends"}
+                src={imageList[4].imgUrl}
                 width={1000}
                 height={500}
               />
