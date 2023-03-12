@@ -2,6 +2,8 @@ import Head from "next/head"
 import Image from "next/image"
 import { Inter } from "next/font/google"
 
+import logo from "../assets/logo.png"
+
 const inter = Inter({ subsets: ["latin"] })
 
 export default function Home() {
@@ -14,12 +16,21 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <section className="min-h-[80vh] flex flex-col justify-center items-start">
-          <h1 className="text-6xl text-red-400">Snap a day</h1>
-          <p className="text-3xl">Create long lasting memories</p>
-          <div className="flex flex-row gap-4">
-            <button>Start Now</button>
-            <button>Login</button>
+        <section className="min-h-[80vh] flex flex-row justify-evenly gap-4 items-center">
+          <div className="flex flex-col justify-center gap-4 items-start ">
+            <h1 className="text-6xl text-red-400">Snap a day</h1>
+            <p className="text-3xl">Create long lasting memories</p>
+            <div className="flex flex-row gap-4">
+              <button className="btn rounded">
+                <a href="/app">Start Now</a>
+              </button>
+              <button className="btn rounded">
+                <a href="/app/login">Login</a>
+              </button>
+            </div>
+          </div>
+          <div className="w-96 h-96">
+            <Image src={logo} width={800} height={800} />
           </div>
         </section>
 

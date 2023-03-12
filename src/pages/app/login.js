@@ -12,13 +12,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="container mx-auto flex flex-col items-center">
-        <h1 className="text-4xl text-red-400">Login</h1>
-        <form className="w-96 flex flex-col justify-center items-center">
-          <label htmlFor="username">Username</label>
-          <input type="text" name="username" />
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" />
+      <main className="min-h-screen mx-auto flex flex-col items-center justify-center gap-4 bg-primary">
+        <h1 className="text-4xl text-white">Login</h1>
+        <form className="w-96 p-10 flex flex-col justify-center items-center gap-10 bg-white rounded-xl">
+          <input type="text" name="username" placeholder="Email"/>
+          <input type="password" name="password" placeholder="Password"/>
           <button>New here? Signup</button>
           <button type="submit" className="btn">Login</button>  
         </form>

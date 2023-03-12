@@ -11,30 +11,13 @@ import {
 } from "react-icons/ai"
 
 import sampleImage from "../../assets/sample-photos/sample.jpg"
+import sampleVideo from "../../assets/sample-video.jpg"
 
 import sampleCameraCapture from "../../assets/sample-camera-capture.jpg"
 
 const inter = Inter({ subsets: ["latin"] })
 
 const images = [
-  {
-    image: "This will eventually be an image",
-  },
-  {
-    image: "This will eventually be an image",
-  },
-  {
-    image: "This will eventually be an image",
-  },
-  {
-    image: "This will eventually be an image",
-  },
-  {
-    image: "This will eventually be an image",
-  },
-  {
-    image: "This will eventually be an image",
-  },
   {
     image: "This will eventually be an image",
   },
@@ -146,15 +129,6 @@ const snaps = [
   {
     snap: "This will eventually be a snap",
   },
-  {
-    snap: "This will eventually be a snap",
-  },
-  {
-    snap: "This will eventually be a snap",
-  },
-  {
-    snap: "This will eventually be a snap",
-  },
 ]
 
 export default function Home() {
@@ -196,6 +170,97 @@ export default function Home() {
     }, 200)
   }
 
+  const imageList = [
+    {
+      imgUrl: "https://source.unsplash.com/random?school",
+      date: new Date("2023-03-12T00:00:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?sky",
+      date: new Date("2021-07-11T12:30:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?radio",
+      date: new Date("2021-03-10T09:15:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?music",
+      date: new Date("2023-07-09T17:45:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?friends",
+      date: new Date("2023-04-08T21:00:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?love",
+      date: new Date("2022-03-07T14:20:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?radio",
+      date: new Date("2021-03-10T09:15:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?music",
+      date: new Date("2023-07-09T17:45:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?friends",
+      date: new Date("2023-04-08T21:00:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?love",
+      date: new Date("2022-03-07T14:20:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?radio",
+      date: new Date("2021-03-10T09:15:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?music",
+      date: new Date("2023-07-09T17:45:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?friends",
+      date: new Date("2023-04-08T21:00:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?love",
+      date: new Date("2022-03-07T14:20:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?student",
+      date: new Date("2021-03-10T09:15:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?music",
+      date: new Date("2023-07-09T17:45:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?college",
+      date: new Date("2023-04-08T21:00:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?bus",
+      date: new Date("2022-03-07T14:20:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?car",
+      date: new Date("2021-03-10T09:15:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?music",
+      date: new Date("2023-07-09T17:45:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?friends",
+      date: new Date("2023-04-08T21:00:00Z"),
+    },
+    {
+      imgUrl: "https://source.unsplash.com/random?love",
+      date: new Date("2022-03-07T14:20:00Z"),
+    },
+  ]
+
   return (
     <>
       <Head>
@@ -205,7 +270,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="container mx-auto min-h-screen flex flex-col items-center">
-        <nav className="container fixed bg-primary text-white px-10 w-full h-16 flex flex-row justify-between items-center">
+        <nav className="container fixed bg-primary rounded text-white px-10 w-full h-16 flex flex-row justify-between items-center">
           <h1 className="text-4xl">Snap A Day</h1>
           <div className="h-12 w-12 rounded-full flex justify-center items-center">
             {username}
@@ -213,27 +278,26 @@ export default function Home() {
         </nav>
 
         <div className="mt-20 h-full">
-          <div className="w-full py-10">
-            <p className="text-3xl">
-              Welcome <strong className="text-primary">{username}</strong>,
-            </p>
+          <div className="w-screen md:w-full py-10">
+            <p className="text-3xl">Your Latest Memories</p>
           </div>
 
-          <div className="w-full flex flex-row justify-start items-center gap-2 shrink-0 overflow-x-scroll">
+          <div className="w-screen md:w-full flex flex-row justify-start items-center gap-2 shrink-0 overflow-x-scroll">
             {snaps.map((snap) => {
               return (
-                <div className="w-40 h-72 border border-primary rounded-md">
-                  {snap.snap}
+                <div className="w-40 h-72 border border-primary rounded-md flex justify-center items-center">
+                  <Image src={sampleVideo} />
                 </div>
               )
             })}
           </div>
 
+          <p className="text-3xl text-primary">Your Images</p>
           <div className="w-full p-4 flex flex-row justify-center md:justify-start items-center gap-1 md:gap-2 flex-wrap">
-            {images.map((image) => {
+            {imageList.map((image) => {
               return (
-                <div className="w-24 h-24 md:w-32 md:h-32 bg-primary flex justify-center items-center">
-                  <Image src={sampleImage} width={800} height={800} />
+                <div className="w-24 h-24 md:w-32 md:h-32 bg-primary flex justify-center items-center overflow-hidden">
+                  <Image src={image.imgUrl} width={2000} height={2000} />
                 </div>
               )
             })}
