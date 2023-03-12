@@ -1,8 +1,8 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import Head from "next/head"
+import Image from "next/image"
+import { Inter } from "next/font/google"
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] })
 
 export default function Home() {
   return (
@@ -13,8 +13,19 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main >
-        <h1 className='text-4xl text-red-400'>Snap a day</h1>
+      <main>
+        <section className="min-h-[80vh] flex flex-col justify-center items-start">
+          <h1 className="text-6xl text-red-400">Snap a day</h1>
+          <p className="text-3xl">Create long lasting memories</p>
+          <div className="flex flex-row gap-4">
+            <button>Start Now</button>
+            <button>Login</button>
+          </div>
+        </section>
+
+        <section className="min-h-[75vh]">Some examples</section>
+
+        <section className="min-h-[75vh]">Footer stuff</section>
       </main>
     </>
   )
