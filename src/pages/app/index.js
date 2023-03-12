@@ -1,9 +1,18 @@
 import { useState, useRef, useEffect } from "react"
 
 import Head from "next/head"
+import Image from "next/image"
 import { Inter } from "next/font/google"
 
-import { AiOutlinePlus, AiOutlineCloseCircle } from "react-icons/ai"
+import {
+  AiOutlinePlus,
+  AiOutlineCloseCircle,
+  AiOutlineCamera,
+} from "react-icons/ai"
+
+import sampleImage from "../../assets/sample-photos/sample.jpg"
+
+import sampleCameraCapture from "../../assets/sample-camera-capture.jpg"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -151,6 +160,8 @@ const snaps = [
 export default function Home() {
   const [isCameraOpen, setIsCameraOpen] = useState(false)
 
+  const [username, setUsername] = useState("Allen")
+
   const videoRef = useRef(null)
 
   const getVideo = () => {
@@ -194,54 +205,71 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="container mx-auto min-h-screen flex flex-col items-center">
-        <nav className="w-full h-16 flex flex-row justify-between items-center">
-          <h1 className="text-4xl text-red-400">Explorer</h1>
+        <nav className="container fixed bg-primary text-white px-10 w-full h-16 flex flex-row justify-between items-center">
+          <h1 className="text-4xl">Snap A Day</h1>
           <div className="h-12 w-12 rounded-full flex justify-center items-center">
-            Allen
+            {username}
           </div>
         </nav>
 
-        <div className="w-full flex flex-row justify-start items-center gap-2 shrink-0 overflow-x-scroll">
-          {snaps.map((snap) => {
-            return <div className="w-40 h-72">{snap.snap}</div>
-          })}
-        </div>
+        <div className="mt-20 h-full">
+          <div className="w-full py-10">
+            <p className="text-3xl">
+              Welcome <strong className="text-primary">{username}</strong>,
+            </p>
+          </div>
 
-        <div className="w-full p-4 flex flex-row justify-center md:justify-start items-center gap-1 md:gap-2 flex-wrap">
-          {images.map((image) => {
-            return (
-              <div className="w-24 h-24 md:w-32 md:h-32">{image.image}</div>
-            )
-          })}
-        </div>
+          <div className="w-full flex flex-row justify-start items-center gap-2 shrink-0 overflow-x-scroll">
+            {snaps.map((snap) => {
+              return (
+                <div className="w-40 h-72 border border-primary rounded-md">
+                  {snap.snap}
+                </div>
+              )
+            })}
+          </div>
 
-        <div
-          className={
-            (isCameraOpen ? "fixed" : "none") +
-            " top-[50%] left-[50%] -translate-y-2/4 -translate-x-2/4 h-4/5 w-4/5"
-          }
-        >
-          <button
-            className="absolute top-0 right-0 text-5xl"
-            onClick={() => {
-              setIsCameraOpen(false)
-            }}
+          <div className="w-full p-4 flex flex-row justify-center md:justify-start items-center gap-1 md:gap-2 flex-wrap">
+            {images.map((image) => {
+              return (
+                <div className="w-24 h-24 md:w-32 md:h-32 bg-primary flex justify-center items-center">
+                  <Image src={sampleImage} width={800} height={800} />
+                </div>
+              )
+            })}
+          </div>
+
+          <div
+            className={
+              (isCameraOpen ? "fixed" : "hidden") +
+              " top-[50%] left-[50%] -translate-y-2/4 -translate-x-2/4 h-4/5 w-4/5 bg-primary z-10 flex flex-col items-center justify-center"
+            }
           >
-            <AiOutlineCloseCircle />
-          </button>
-          <div ref={videoRef}></div>
-          <canvas />
-          <button>Capture</button>
-        </div>
+            <button
+              className="absolute top-0 right-0 p-4 text-5xl text-white"
+              onClick={() => {
+                setIsCameraOpen(false)
+              }}
+            >
+              <AiOutlineCloseCircle />
+            </button>
+            <div className="h-4/5 flex justify-center items-center overflow-hidden">
+              <Image src={sampleImage} width={3000} height={1000} />
+            </div>
+            <button className="absolute bottom-0 left-2/4 -translate-x-2/4 text-white text-6xl">
+              <AiOutlineCamera />
+            </button>
+          </div>
 
-        <button
-          onClick={() => {
-            setIsCameraOpen(true)
-          }}
-          className="fixed bottom-[10%] md:bottom-[15%] right-[10%] text-5xl rounded-full"
-        >
-          <AiOutlinePlus />
-        </button>
+          <button
+            onClick={() => {
+              setIsCameraOpen(true)
+            }}
+            className="fixed bottom-[10%] md:bottom-[15%] right-[10%] text-5xl bg-primary text-white p-2 rounded-full"
+          >
+            <AiOutlineCamera />
+          </button>
+        </div>
       </main>
     </>
   )

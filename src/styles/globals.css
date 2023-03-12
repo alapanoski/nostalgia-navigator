@@ -17,8 +17,3 @@
 
 @layer utilities {
 }
-
-* {
-  outline: 1px solid green;
-  background-color: rgba(0, 100, 50, 0.1);
-}
